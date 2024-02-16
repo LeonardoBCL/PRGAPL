@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+//Valores Int
+int contador = 0;
+int numeromes[3];
+int soma = 0;
+int tomada_decisao;
+int qtd_atual;
+int lote_rep;
+int temporep;
+//Grupo Valores FLOAT.
+float VMD;
+float Emin;
+float Emax;
+//Valores CHAR.
+char nome_produto[50];
+
+//Solicitação do NOME do produto:
+
+printf("Olá, insira o nome do produto: ");
+gets(nome_produto);
+printf("\n Produto identificado: %s", nome_produto);
+printf("\n A seguir, insira os valores solicitados para o processamento.");
+
+//Leitura de valor -> numero_mes
+    for(contador = 0; contador < 3; contador++){
+    printf("\n Digite o %d mes: ", contador + 1);
+    
+    scanf("%d", &numeromes[contador]);
+
+    soma+= numeromes[contador];
+    }
+//Cálculo do VMD.
+    VMD = (soma/3)/25;
+    printf("\n A media diaria e igual a: %.2f", VMD);
+
+//Solicitação de tempo de reposição.    
+    printf("\n Digite o tempo de reposicao: ");
+    scanf("%d", &temporep);
+    
+//Resulta Estoque minimo.
+    Emin = VMD * temporep;
+
+    printf("\n O valor de Estoque minimo, equivale a: %.2f", Emin);
+
+    printf("\n Insira o valor do Lote de reposição: ");
+    scanf("%d", &lote_rep);
+
+//Resulta Estoque Máximo
+    Emax = Emin + lote_rep;
+    printf("\n O estoque maximo, equivale a: %.2f", Emax);
+    
+//Solicita Quantidade atual.
+
+    printf("\n Digite o valor do Estoque Atual do produto: ");
+    scanf("%d", &qtd_atual);
+//Condicional de reposição.    
+    if (qtd_atual > Emin){
+        
+        printf("\n Reposição NÃO necessária.");
+    }
+    else {
+        printf("\n Reposição NECESSÁRIA.");
+    }
+    
+    return 0;
+
+}
